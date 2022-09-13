@@ -9,8 +9,9 @@ body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    height: 100vh;
 }
 
 header {
@@ -111,4 +112,12 @@ button {
 button:hover {
     cursor: pointer;
     opacity: 0.7;
+}
+
+section {
+    flex: 2;
+}
+
+footer {
+    padding-bottom: 15px;
 }

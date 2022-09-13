@@ -6,6 +6,7 @@ const clearAllButton = document.querySelector(".clear-all")
 const clearOneButton = document.querySelector(".clear-entry")
 const equalsButton = document.querySelector(".equals")
 const dotButton = document.querySelector(".dot")
+const eListeners = ['click', 'keyup']
 let currNum = ""
 let nextNum = ""
 let operator = ""
@@ -14,6 +15,15 @@ let result = ""
 clearAllButton.addEventListener("click", (e) => clearAll())
 equalsButton.addEventListener("click", (e) => equals())
 clearOneButton.addEventListener("click", (e) => clearLast())
+
+eListeners.forEach(function(e) {
+    dotButton.addEventListener(e, (ev) => {
+        if (ev.key == dotButton.textContent) {
+            console.log(`key=${e.key},code=${e.code}`)
+        }
+    });
+  });
+
 
 // Adding float numbers
 dotButton.addEventListener("click", (e) => {
@@ -50,11 +60,13 @@ numButtons.forEach(button => {
 operatorButtons.forEach(button => {
     button.addEventListener("click", (e) => {
         equalsButton.removeAttribute('disabled', '')
-        if (currNum != "" && nextNum != "") {
-            equals()
+        if (currNum != "") {
+            if (currNum != "" && nextNum != "") {
+                equals()
+            }
+            operator = button.textContent
+            updateDisplay()
         }
-        operator = button.textContent
-        updateDisplay()
     })
 })
 
